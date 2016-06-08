@@ -68,16 +68,6 @@
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>searchkey</servlet-name>
-        <servlet-class>cukin.com.kntc.searchkeyword.SearchKeywordServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>searchkey</servlet-name>
-        <url-pattern>/searchkey</url-pattern>
-    </servlet-mapping>
-
     <filter>
         <filter-name>CharsetFilter</filter-name>
         <filter-class>CharsetFilter</filter-class>
