@@ -1,0 +1,635 @@
+.addmore{
+    right: 150px;
+}
+#addlabel{
+
+}
+.summarycontent{
+    border: 2px solid #BDC3B6;
+    border-style: solid;
+    height: auto;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+    cursor:text;overflow:auto;
+}
+#parentfield{
+    border: 1px solid #BDC3B6;
+    border-style: solid;
+    height: auto;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+}
+.logincontent{
+    height: 100%;
+    margin: 0px auto;
+}
+.summarylabel{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #23CBC5;
+    text-align: center;
+    font-weight: bold;
+}
+.importdatalabel{
+    margin-bottom: 36px;
+    margin-top: 36px;
+    color: #23CBC5;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+.summarycontent{
+    width: 100%;
+    height: 200px;
+}
+td{
+    color: #C3600C;
+}
+form{
+    width: 50%;
+    margin: 200px auto;
+    height: 50%;
+    margin-left: 40%;
+}
+.fielddata_left, .fielddata_right {
+    float: left;
+    width: 45%;
+    margin: 5px 0px;
+    padding: 4px;
+    display: inline-block;
+    border: 1px solid #C3E2E7;
+    min-width: 483px;
+}
+.fielddata_right {
+    margin-left: 10px;
+}
+#editctl{
+    float: right;
+    margin-bottom: 10px;
+}
+.search{
+    display: inline-block;
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 35px;
+}
+.searchlabel{
+    color: #C3600C;
+    float: left;
+    margin-left: 26px;
+    margin-top: 9px;
+}
+.namtclabel{
+    color: #C3600C;
+    float: left;
+    margin-left: 26px;
+    margin-top: 9px;
+}
+#namtcvalue{
+    height: 26px;
+    resize: none;
+    border: 1px solid #2BA4A4;
+    float: left;
+    width: 10%;
+    margin-top: 5px;
+    margin-left: 7px;
+}
+#searchvalue{
+    height: 26px;
+    resize: none;
+    border: 1px solid #2BA4A4;
+    float: left;
+    width: 15%;
+    margin-top: 5px;
+    margin-left: 7px;
+}
+#typevalue{
+    height: 34px;
+    resize: none;
+    border: 1px solid #2BA4A4;
+    float: left;
+    width: 10%;
+}
+#insertctl{
+    float: right;
+    margin-bottom: 10px;
+}
+.txtimport{
+    height: 200px;
+    width: 99%;
+    resize: none;
+    border: 1px solid #BDC3B6;
+    margin-top: 10px;
+}
+.txtrelatedimport{
+    height: 70px;
+    width: 98%;
+    resize: none;
+    border: 1px solid #BDC3B6;
+}
+.txtdocstt{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    margin-left: 10px;
+    height: 24px;
+    margin-bottom: 10px;
+    width: 20px;
+}
+#summit{
+    width:30px; /*width of your image*/
+    height:20px; /*height of your image*/
+    margin:0; /* If you want no margin */
+    padding:0; /*if your want to padding */
+}
+.buttonlist{
+    text-align: center;
+}
+.txtSearch{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    width: 150px;
+    height: 30px;
+}
+.txtlinkid{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    margin-left: 10px;
+    height: 24px;
+    margin-bottom: 10px;
+    width: 50px;
+}
+.txtdoctype{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+    margin-bottom: 10px;
+    width: 20px;
+}
+.fielddata{
+    float: left;
+    width: 45%;
+}
+.fieldlabel{
+float:left;
+}
+.fieldlabeldocid{
+    float: left;
+    margin-left: 10px;
+}
+.fieldlabeldoctype{
+    float: left;
+    margin-left: 10px;
+}
+.fieldlabelkm{
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+    height:40px;
+}
+.kmtype{
+    float: left;
+}
+.checkkm{
+    margin-left: 15px;
+    margin-top: 7px;
+}
+.fieldkmlabelfrom{
+    float: left;
+    margin-bottom: 4px;
+    margin-left: 13px;
+    width: 200px;
+}
+.fieldkmlabelto{
+    margin-bottom: 4px;
+    width: 200px;
+    float: left;
+}
+.checkkmdatefrom{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+    width: 100px;
+}
+.checkkmdateto{
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+    width: 100px;
+}
+#importdata{
+    float: left;
+    width: 100%;
+    color: #6D6D6E;
+}
+#updatedata{
+    float: left;
+    width: 100%;
+}
+#summitv img {
+    display: block;
+    width: 100%;
+}
+.more{
+    color: #C3600C;
+}
+.link-button-red:hover {
+    background-color: #C5691B;
+}
+.link-button-red {
+    margin-top: 15px;
+    max-width: 150px;
+    background-color: firebrick;
+    color: #F0E6E6;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    align-items: flex-start;
+    cursor: default;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+    border-color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    min-height: 30px;
+}
+
+.link-button-red:active {
+    background-color:#333;
+}
+
+.link-button-red:hover a, .link-button-red:active a {
+    color:#fff;
+}
+.link-button:hover {
+    background-color: #C5691B;
+}
+.link-button {
+    margin-top: 15px;
+    max-width: 150px;
+    background-color: #09A196;
+    color: #F0E6E6;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    align-items: flex-start;
+    cursor: default;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+    border-color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    min-height: 30px;
+}
+
+.link-button:active {
+    background-color:#333;
+}
+
+.link-button:hover a, .link-button:active a {
+    color:#fff;
+}
+#shade, #modal { display: none; }
+#shade { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%; }
+#modal { position: fixed; z-index: 101; top: 33%; left: 25%; width: 50%; border: 2px solid #87D2CF;
+    padding: 15px;color: #BA4914;}
+#shade {
+    background: #E6B783 none repeat scroll 0% 0%;
+    opacity: 0.9;
+  filter: alpha(opacity=50); }
+
+
+.search-button:hover {
+    background-color: #C5691B;
+}
+.search-button {
+    max-width: 150px;
+    background-color: #09A196;
+    color: #F0E6E6;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    align-items: flex-start;
+    cursor: default;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+    border-color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    min-height: 30px;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
+.search-button:active {
+    background-color:#333;
+}
+
+.search-button:hover a, .search-button:active a {
+    color:#fff;
+}
+
+.kmedit {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin: 10px;
+}
+.summary{
+    border: 1px solid #BDC3B6;
+    height: 100%;
+    padding: 8px;
+    width: 99%;
+    display: inline-block;
+    color: #6D6D6E;
+    margin-bottom: 20px;
+}
+#summarytype{
+    float: left;
+    margin-top: 10px;
+}
+#kmedit{
+    float: left;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.kmlabel{
+    float: left;
+    margin-left: 30px;
+}
+#datetimepickerfrom{
+    margin-left: 30px;
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+    width: 306px;
+    min-width: 100px;
+}
+#kntc_ngaynop{
+    margin-left: 30px;
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+    width: 306px;
+    min-width: 100px;
+}
+#datetimepickerto{
+    margin-left: 30px;
+    border: 1px solid #D4DACD;
+    color: #C3600C;
+    height: 24px;
+}
+.kmdescription{
+    margin-top: 20px;
+    width: 100%;
+    float: left;
+}
+#searchresultresult{
+    text-align: center;
+    margin-bottom: 10px;
+    border: 2px solid #BDC3B6;
+    padding: 15px;
+    color: rgb(242, 9, 9);
+    font-weight: bold;
+    background-color: #A3A3B1;
+}
+.searchdetail{
+    border: 2px solid #BDC3B6;
+    padding: 4px;
+    display: inline-block;
+    margin-top: 10px;
+}
+#searchresultresultoption{
+    color: #123CB6;
+    font-weight: bold
+}
+/*#txtimportkeyword{
+    height: 40px;
+}*/
+#samekeywordwarning{
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+.kmrelatedkeyword{
+    margin-top: 7px;
+}
+#txtrelatedkeyword{
+    height: 40px;
+}
+#editwarning{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+#slide{list-style:none;width:100%;height: 20px;
+    text-align: center;}
+#slide li{float:left; width:100%; }
+#updatedtime{
+    color: blue;
+    font-weight: normal;
+    font-size: 10pt;
+    font-style: italic;
+}
+a:link,  a:visited {
+    color:blue;
+}
+#updatekey{
+    text-align: center;
+}
+.keywordlabel{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #D5A124;
+    font-size: 15pt;
+    font-weight: bold;
+}
+#keywordupdate{
+    width: 100%;
+    height: 300px;
+    resize: none;
+    border: 1px solid #BDC3B6;
+}
+#buttonlistkeywordupdate{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.namtc{
+    margin-bottom: 20px;
+}
+#ckt_div{
+    margin-top: 10px;
+    float: left;
+}
+#ckt_select{
+    margin-left: 20px;
+    width: 120px;
+}
+#ddkt_div{
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#ddkt_select{
+    margin-left: 20px;
+    width: 120px;
+}
+#lhkn_div{
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+#lhkn_select{
+    margin-left: 20px;
+}
+.knsplabel{
+    font-family: "Times New Roman", Georgia, Serif;
+}
+.kntc{
+    border: 1px solid #BDC3B6;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.kntcgroup{
+    margin-bottom: 16px;
+    margin-top: 16px;
+    color: #c5691b;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+.ctthkntc{
+    border: 1px solid #BDC3B6;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ctthkntcgroup{
+    margin-bottom: 16px;
+    margin-top: 16px;
+    color: #c5691b;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+#kmcha_div{
+    margin-top: 10px;
+    float: left;
+}
+#kmcha_div{
+    margin-right: 20px;
+}
+
+#kmcon_div{
+    margin-top: 10px;
+    float: left;
+}
+#kmcon_div{
+    margin-left: 20px;
+}
+#lsltc_div{
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+#lsltc_select{
+    margin-left: 20px;
+}
+.kntclabel{
+
+}
+#ndkntctext{
+    height: 100px;
+    width: 99%;
+    resize: none;
+    border: 1px solid #BDC3B6;
+    margin-top: 10px;
+}
+.kntcmoneylabel{
+    margin-top: 15px;
+}
+#ndkntcmoneytext{
+    height: 40px;
+    width: 99%;
+    resize: none;
+    border: 1px solid #BDC3B6;
+    margin-top: 10px;
+}
+.sochungtulabel{
+}
+#sochungtutext{
+    height: 30px;
+    margin-top: 10px;
+    width: 99%;
+    resize: none;
+    border: 1px solid #BDC3B6;
+}
+#kntc_ngaynop{
+
+}
+.ngaynoplabel{
+    margin-top: 10px;
+    float: left;
+}
+.khobaclabel{
+    margin-left: 20px;
+    float: left;
+}
+#khobactext{
+    margin-left: 10px;
+    height: 30px;
+    margin-top: 10px;
+    resize: none;
+    border: 1px solid #BDC3B6;
+}
+.ctthmoneylabel{
+    margin-top: 50px;
+}
+#ndctthmoneytext{
+    margin-left: 41px;
+    height: 30px;
+    margin-top: 10px;
+    width: 306px;
+    resize: none;
+    border: 1px solid #BDC3B6;
+}
+#cnsp{
+    float: right;
+    margin-right: 15px;
+}
+#kntc{
+    float: right;
+    margin-right: 15px;
+}
+#timkiem{
+    float: right;
+    margin-right: 15px;
+}
+#knvb{
+    float: right;
+    margin-right: 15px;
+}
+.controlpanel{
+    margin-bottom: 20px;
+    background-color: #aaaaaa;
+    height: 25px;
+}
