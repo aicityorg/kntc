@@ -412,9 +412,10 @@ float:left;
     background-color: #A3A3B1;
 }
 .searchdetail{
+    /*
     border: 2px solid #BDC3B6;
+    */
     padding: 4px;
-    display: inline-block;
     margin-top: 10px;
 }
 #searchresultresultoption{

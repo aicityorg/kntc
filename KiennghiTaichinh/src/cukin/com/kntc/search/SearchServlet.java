@@ -39,19 +39,18 @@ public class SearchServlet extends HttpServlet {
         Map<String , String> params = utils.getParameters(jb.toString());
 
         String keyword = params.get("keyword")/*.replaceAll("<", "#60").replaceAll(">", "#62")*/;
-        String type = params.get("type");
+
+        String detail = params.get("detail");
 
         String mysqlurl= getServletContext().getInitParameter("mysqlhost");
         String mysqluser = getServletContext().getInitParameter("mysqluser");
         String mysqlpass = getServletContext().getInitParameter("mysqlpass");
 
 
-        if(type.compareTo("id") == 0){
-            out.write(SearchService.search_keyword_byid(mysqlurl, mysqluser, mysqlpass, keyword));
-        }else if(type.compareTo("key") == 0){
-            out.write(SearchService.search_keyword_bykeyword(mysqlurl, mysqluser, mysqlpass, keyword));
-        }else if(type.compareTo("same") == 0){
-            out.write(SearchService.search_samekeyword(mysqlurl, mysqluser, mysqlpass, keyword));
+        if(detail.compareTo("false") == 0){
+            String type = params.get("type");
+            String year = params.get("year");
+            out.write(SearchService.search_keyword_byid(mysqlurl, mysqluser, mysqlpass, year, type, keyword));
         }
         else{
             out.write(SearchService.search_data(mysqlurl, mysqluser, mysqlpass, keyword));

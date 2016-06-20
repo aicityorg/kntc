@@ -105,9 +105,6 @@
     <div id="namtcvalue" name="textarea" contenteditable="true"></div>
     <div class="searchlabel">Từ khóa:</div>
     <div id="searchvalue" name="textarea" contenteditable="true"></div>
-
-
-
     <input type="button" class="search-button" onclick="search()"value="Tìm kiếm"/>
 </div>
 
@@ -126,36 +123,10 @@
 
 <div class="searchdetail">
 
-    <div class="summary" id="summarysearch">
-
-        <div id="summarytype">
-            Loại tài liệu:
-            <select id="myselect" onchange="onSummaryOptionChange()">
-                <option value="normal">Sản phẩm</option>
-                <option value="dv">Dịch vụ</option>
-                <option value="km">Khuyến mại</option>
-            </select>
-        </div>
-        <div id="kmedit">
-            <div class="kmlabel" >Từ ngày: <input type="date" id="datetimepickerfrom" ></div>
-            <div class="kmlabel">Đến ngày: <input type="date" id="datetimepickerto" ></div>
-
-
-        </div>
-        <div class='kmdescription' id="keyword" >
-            Từ khóa (không dấu):
-            <textarea class="txtimport"  id="txtimportkeyword" name="textarea" ></textarea>
-            <div class="kmrelatedkeyword">Từ khóa liên quan: <textarea class="txtrelatedimport"  id="txtrelatedkeyword" name="textarea" ></textarea></div>
-        </div>
-    </div>
-    <div id="samekeywordwarning"></div>
     <div id="updatedata">
-
         <div id='parentfield'>
 
         </div>
-
-
     </div>
 
 </div>
@@ -165,7 +136,9 @@
     <input type="button" id="btndelete" class="link-button-red" onclick="deletedata()"value="Xóa"/>
 
     <input type="button" id="btnupdate" class="link-button" onclick="updatedata()"value="Cập nhật"/>
+<%--
     <input type="button" class="link-button" onclick="addmorefield()"value="Thêm thuộc tính"/>
+--%>
 </div>
 
 </body>
