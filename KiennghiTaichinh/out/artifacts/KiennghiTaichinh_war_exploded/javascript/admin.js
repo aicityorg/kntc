@@ -372,219 +372,53 @@ function  parsecnsp(msg) {
     buttonlistupdate.style.display= 'block';
 
 }
-function  parseJson(msg) {
+
+function  parsekntc(msg) {
     if (msg.length == 0)
         return;
     defaultcontrolbeforeedit();
-    var jsondata = JSON.parse(msg);
-    jsonsummary = '';
-    
-    for (var item in jsondata) {
-        if(item == "summary"){
-            jsonsummary = jsondata[item];
-            
-        }else if(item == "keyword"){
+    var jsondata = /*JSON.parse*/(msg);
+    namtc = jsondata["namtc"];
+    cuockt = jsondata["cuockt"];
+    diadiemkt = jsondata["diadiemkt"];
+    loaihinhkt = jsondata["loaihinhkt"];
+    khoanmuccha = jsondata["kmcha"];
+    khoanmuccon = jsondata["kmcon"];
+    loaisolieu =jsondata["solieutc"];
+    noidung =jsondata["noidungtc"];
+    sotien = jsondata["sotientc"];
+    sochungtu =jsondata["sochungtu"];
+    ngaynop = jsondata["ngaynop"];
+    tenkhoabac = jsondata["tenkhobacnop"];
+    sotienkhobac = jsondata["sotienchungtu"];
+    insertkntc(namtc, cuockt, diadiemkt, loaihinhkt, khoanmuccha, khoanmuccon, loaisolieu, noidung, sotien, sochungtu, ngaynop, tenkhoabac, sotienkhobac);
 
-            keyword = jsondata[item];
-            if(keyword == null)
-                keyword = "";
-            keyword = replaceAll('@#', '=', keyword);
-            keyword = replaceAll("@2@", "&", keyword);
-            oldkeyword = keyword;
-
-        }
-        else if(item == "related"){
-
-            relatedkeyword = jsondata[item];
-            if(relatedkeyword == null)
-                relatedkeyword = "";
-            relatedkeyword = replaceAll('@#', '=', relatedkeyword);
-            relatedkeyword = replaceAll("@2@", "&", relatedkeyword);
-
-        }
-        else if(item == "description"){
-            description = jsondata[item];
-        }
-        else if(item == "type"){
-            summarytype = jsondata[item];
-        }
-        else if(item == "updatedtime"){
-            updatedtime = jsondata[item];
-        }
-    }
     var modal= document.getElementById('updatedata');
     var buttonlistupdate = document.getElementById('buttonlistupdate');
-    var keywordtag = document.getElementById ("summarysearch");
     modal.style.display= 'block';
     buttonlistupdate.style.display= 'block';
-    keywordtag.style.display= 'inline-block';
-    displaysummaryandkeyword();
-    displayupdatecontent(jsonsummary);
 
 }
 
-function getkeywordanddescription() {
-    var x = document.getElementById("myselect").value;
-    if(x == "km"){
-        summarytype = '1';
+function  parseknvb(msg) {
+    if (msg.length == 0)
+        return;
+    defaultcontrolbeforeedit();
+    var jsondata = /*JSON.parse*/(msg);
+    namtc = jsondata["namtc"];
+    cuockt = jsondata["cuockt"];
+    diadiemkt = jsondata["diadiemkt"];
+    loaihinhkt = jsondata["loaihinhkt"];
+    noidungkt = jsondata["noidungkt"];
+    insertknvb(namtc, cuockt, diadiemkt, loaihinhkt, noidungkt);
 
-        var datefrom = document.getElementById("datetimepickerfrom");
-        var datetp = document.getElementById("datetimepickerto");
-        description = datefrom.value + "@" + datetp.value;
-    }else if(x == "dv"){
-        summarytype = '0';
-        description = '';
-    }
-    else {
-        summarytype = '2';
-        description = '';
-    }
-    var parentsummary = document.getElementById('keyword');
-    var keywordtag = getElementsByClassName(parentsummary, "txtimport");
-    keyword = replaceAll("\t", "  ", keywordtag[0].value);
-    keyword = replaceAll("=", "@#", keyword);
-    keyword = replaceAll("&", "@2@", keyword);
-    keyword = keyword.trim();
-
-    var relatedkeywordtag = getElementsByClassName(parentsummary, "txtrelatedimport");
-    relatedkeyword = replaceAll("\t", "  ", relatedkeywordtag[0].value);
-    relatedkeyword = replaceAll("=", "@#", relatedkeyword);
-    relatedkeyword = replaceAll("&", "@2@", relatedkeyword);
-    relatedkeyword = relatedkeyword.trim();
+    var modal= document.getElementById('updatedata');
+    var buttonlistupdate = document.getElementById('buttonlistupdate');
+    modal.style.display= 'block';
+    buttonlistupdate.style.display= 'block';
 
 }
-function updatekeywordfile(){
-    var key =  document.getElementById( 'keywordupdate' );
-    if(key.value.length > 0){
-        text = key.value;
-        text = replaceAll('\n','@1@', text);
-        $.ajax({
-            type: "post",
-            url: webservice + "uploadkey", //this is my servlet
-            data: "keyword="+text + "&cmd=upload",
-            cache: false,
-            processData: false,
-            success: function(msg){
-/*
-                key.value = "";
-*/
-                alert('Cập nhật thành công');
-            },
-            error: function(xhr, status, error) {
-                var err = eval("(" + xhr.responseText + ")");
-                alert('Lỗi '+err.Message);
-            }
-        });
-    }
-}
-function getkeywordfile(){
-    $.ajax({
-        type: "post",
-        url: webservice + "uploadkey", //this is my servlet
-        data: "keyword=123" + "&cmd=get",
-        cache: false,
-        processData: false,
-        success: function(msg){
-            var key =  document.getElementById( 'keywordupdate' );
-            if(msg.length > 0){
-                msg = replaceAll('@1@','\n', msg);
-                key.value = msg;
-            }
-        },
-        error: function(xhr, status, error) {
 
-        }
-    });
-
-
-
-}
-function getnodestring(child) {
-
-
-    var fieldname = getElementsByClassName(child, 'txtSearch' );
-    var docid = getElementsByClassName(child, 'txtlinkid' );
-    var doctype = getElementsByClassName(child, 'txtdoctype');
-    var description = getElementsByClassName(child, 'txtimport');
-    var stt = getElementsByClassName(child, 'txtdocstt');
-
-    strfieldname = replaceAll("\t", "  ", fieldname[0].value);
-    strdocid = docid[0].value;
-    strdoctype = doctype[0].value;
-    strdescription = replaceAll("\t", "  ", description[0].value);
-
-    if (strfieldname.length == 0 || strdescription.length == 0)
-        return "";
-    if( strdoctype.length == 0){
-        strdoctype = '4';
-    }
-    strdoctype += '$' + stt[0].value;
-    var kmcheckbox = getElementsByClassName(child, 'checkkm' );
-
-    km = kmcheckbox[0].checked;
-    strkm = 'false';
-    strdatefrom = '';
-    strdateto = '';
-    if(km){
-        var datefrom = getElementsByClassName(child, 'checkkmdatefrom' );
-        var dateto = getElementsByClassName(child, 'checkkmdateto' );
-        strdatefrom = datefrom[0].value;
-        strdateto = dateto[0].value;
-        strkm = 'true';
-    }
-
-    content = '{"name":"{0}",'.format(replaceAll("\"", "", strdescription));
-    content += '"id":"{0}",'.format(replaceAll("\"", "",strdocid));
-    content += '"type":"{0}",'.format(replaceAll("\"", "",strdoctype));
-    content += '"km":"{0}",'.format(replaceAll("\"", "",strkm));
-    content += '"fr":"{0}",'.format(replaceAll("\"", "",strdatefrom));
-    content += '"to":"{0}"}'.format(replaceAll("\"", "",strdateto));
-    
-    result = '"{0}":{1}'.format(strfieldname, content);
-    result = replaceAll("=", "@#", result);
-    return result;
-}
-function getpostjson() {
-    
-    getkeywordanddescription();
-
-    var div =  document.getElementById( 'parentfield' );
-    var left = getElementsByClassName(div, 'fielddata_left' );
-    var right = getElementsByClassName(div, 'fielddata_right' );
-    var json = '{';
-
-    for (var i=0; i<left.length; i++) {
-            
-        var child = left[i];
-        strnode = getnodestring(child);
-        if(strnode.length > 0){
-            json += '{0}'.format(result);
-            json += ",";
-        }
-
-        if(i< right.length){
-            var childchild = right[i];
-            strnode = getnodestring(childchild);
-            if(strnode.length > 0){
-                json += '{0}'.format(result);
-                json += ",";
-            }
-        }
-    }
-
-    json += '}';
-    if (json[json.length -2] == ','){
-        json = setCharAt(json, (json.length -2), "");
-    }
-    json = replaceNewLine(json);
-    json = replaceAll("\n", " <br/> ", json);
-    
-    json = replaceAll("%", "@1@", json);
-    json = replaceAll("&", "@2@", json);
-
-    json = JSON.stringify(json);
-    return json;
-}
 function replaceNewLine(myString) {
     var regX = /\r\n|\r|\n/g;
     var replaceString = '<br/>';
@@ -613,98 +447,7 @@ function setCharAt(str,index,chr) {
     if(index > str.length-1) return str;
     return str.substr(0,index) + chr + str.substr(index+1);
 }
-function updatedata() {
-    var postjson = getpostjson();
-    if(keyword.length > 0){
-        var currentdate = new Date();
-        var datetime = currentdate.getDate() + "/"
-            + (currentdate.getMonth()+1)  + "/"
-            + currentdate.getFullYear() + " "
-            + currentdate.getHours() + ":"
-            + currentdate.getMinutes() + ":"
-            + currentdate.getSeconds();
-        datetime += " do " + account;
-        
-        $.ajax({
-            type: "post",
-            url: webservice + "update", //this is my servlet
-            data: "summary=" +postjson+"&keyword="+keyword+"&description="+description+"&summarytype="+summarytype+"&originkey="+oldkeyword+"&uptime="+datetime + "&related="+relatedkeyword,
-            cache: false,
-            processData: false,
-            success: function(msg){
-                msg = msg.trim();
-                if(msg == "true"){
-                    deletewarning();
-                    alert("Cập nhật thành công");
 
-                    removeOptionsbyValue(oldkeyword, document.getElementById('searchresultresultoption'));
-                    var select = document.getElementById('searchresultresultoption');
-                    if(select.options.length > 0){
-                        onSearchResultOptionChange();
-                    }
-                    else{
-                        defaultcontrolbeforeedit();
-                        displaysearchresultoption(false);
-
-                        $("#parentfield").children().remove();
-                    }
-                }
-                else{
-                    alert('Không thành công !!!!!')
-                }
-
-
-            },
-            error: function(xhr, status, error) {
-                var err = eval("(" + xhr.responseText + ")");
-                alert(err.Message);
-            }
-        });
-    }else{
-        alert('Từ khóa không đúng, có thể bị rỗng. Kiểm tra lại');
-    }
-}
-function deletedata() {
-    var r = confirm("Bạn chắc chắn xóa không?");
-    if (r == true) {
-        if(keyword.length > 0){
-            $.ajax({
-                type: "post",
-                url: webservice + "delete", //this is my servlet
-                data: "keyword="+keyword,
-                success: function(msg){
-                    msg = msg.trim();
-                    if(msg == "true"){
-                        deletewarning();
-                        alert("Xóa thành công");
-
-                        removeOptionsbyValue(oldkeyword, document.getElementById('searchresultresultoption'));
-                        var select = document.getElementById('searchresultresultoption');
-                        if(select.options.length > 0){
-                            onSearchResultOptionChange();
-                        }
-                        else{
-                            defaultcontrolbeforeedit();
-                            displaysearchresultoption(false);
-
-                            $("#parentfield").children().remove();
-                        }
-                    }else{
-                        alert("Xóa không thành công!!!!!!")
-                    }
-
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    return;
-                }
-            });
-        }else{
-            alert('Từ khóa không đúng, có thể bị rỗng. Kiểm tra lại');
-        }
-    }
-    
-}
 
 function searchdetail(searchstring) {
 
@@ -719,6 +462,12 @@ function searchdetail(searchstring) {
             var jsondata = JSON.parse(msg);
             if(jsondata["type"]==CNSP_TYPE){
                 parsecnsp(jsondata["data"]);
+            }
+            if(jsondata["type"]==KNTC_TYPE){
+                parsekntc(jsondata["data"]);
+            }
+            if(jsondata["type"]==KNVB_TYPE){
+                parseknvb(jsondata["data"]);
             }
             updatedtime = jsondata["updatedtime"];
             displaysearchresultoption(true);
@@ -823,6 +572,45 @@ function insertcnsp(namtc, cuockt, diadiemkt, loaihinhkn, noidung) {
     insertstring += '<div id="lhkn_div">   Loại hình kiến nghị:   <select id="lhkn_select" >  <option>"{0}"</option> <option>Kiến nghị sai phạm cá nhân, tổ chức</option>       <option>Kiến nghị tài chính</option>   <option>Kiến nghị sửa đổi, hủy bỏ văn bản</option>    </select>   </div>'.format(loaihinhkn);
 
     insertstring += '<div class="knsplabel" id="knsplb" >     Nội dung:      <textarea class="txtimport"  id="txtimportkeyword" name="textarea" >{0}</textarea>    </div>'.format(noidung);;
+
+    $("#parentfield").append(insertstring);
+}
+function insertknvb(namtc, cuockt, diadiemkt, loaihinhkn, noidung) {
+    var div =  document.getElementById( 'parentfield' );
+
+    insertstring = '  <div class="namtc" >Năm tài chính: <input type="text" value="{0}" id="datetimepickerfrom" onclick="clickdatetimefrom()"></div>'.format(namtc);
+    insertstring += '<div id="ckt_div"> Cuộc kiểm toán: <select id="ckt_select" > <option>"{0}"</option>  <option>Cuộc 1</option>      <option>Cuộc 2</option> <option>Cuộc 3</option>  <option>...</option></select>   </div>'.format(cuockt);
+    insertstring += '<div id="ddkt_div"> Địa điểm kiểm toán:  <select id="ddkt_select" > <option>"{0}"</option>   <option>Yên Bái</option>   <option>Phú Thọ</option>      <option>Lào Cai</option>    <option>...</option>  </select>   </div>'.format(diadiemkt);
+    insertstring += '<div id="lhkn_div">   Loại hình kiến nghị:   <select id="lhkn_select" >  <option>"{0}"</option> <option>Kiến nghị sai phạm cá nhân, tổ chức</option>       <option>Kiến nghị tài chính</option>   <option>Kiến nghị sửa đổi, hủy bỏ văn bản</option>    </select>   </div>'.format(loaihinhkn);
+
+    insertstring += '<div class="knsplabel" id="knsplb" >     Nội dung:      <textarea class="txtimport"  id="txtimportkeyword" name="textarea" >{0}</textarea>    </div>'.format(noidung);;
+
+    $("#parentfield").append(insertstring);
+}
+
+function insertkntc(namtc, cuockt, diadiemkt, loaihinhkn, khoanmuccha, khoanmuccon, loaisolieu, noidung, sotien, sochungtu, ngaynop, tenkhoabac, sotienkhobac) {
+    var div =  document.getElementById( 'parentfield' );
+
+    insertstring = '  <div class="namtc" >Năm tài chính: <input type="text" value="{0}" id="datetimepickerfrom" onclick="clickdatetimefrom()"></div>'.format(namtc);
+    insertstring += '<div id="ckt_div"> Cuộc kiểm toán: <select id="ckt_select" > <option>"{0}"</option>  <option>Cuộc 1</option>      <option>Cuộc 2</option> <option>Cuộc 3</option>  <option>...</option></select>   </div>'.format(cuockt);
+    insertstring += '<div id="ddkt_div"> Địa điểm kiểm toán:  <select id="ddkt_select" > <option>"{0}"</option>   <option>Yên Bái</option>   <option>Phú Thọ</option>      <option>Lào Cai</option>    <option>...</option>  </select>   </div>'.format(diadiemkt);
+    insertstring += '<div id="lhkn_div">   Loại hình kiến nghị:   <select id="lhkn_select" >  <option>"{0}"</option> <option>Kiến nghị sai phạm cá nhân, tổ chức</option>       <option>Kiến nghị tài chính</option>   <option>Kiến nghị sửa đổi, hủy bỏ văn bản</option>    </select>   </div>'.format(loaihinhkn);
+
+    insertstring += '<div class="kntc"  > <div class="kntcgroup">Kiến nghị tài chính</div>';
+    insertstring += '<div id="kmcha_div"> Khoản mục cha: <select id="kmcha_select">     <option>{0}</option><option>Tăng thu NSNN</option>  <option>Tăng thu khác NSNN</option>   <option>Giảm chi thường xuyên</option>      <option>Giảm chi đầu tư xây dựng</option>        <option>Xử lý nợ đọng, vay tạm ứng, ghi chi-ghi thu</option> </select>  </div>'.format(khoanmuccha);
+
+    insertstring += '<div id="kmcon_div">     Khoản mục con:     <select id="kmcon_select">  <option>{0}</option>       <option>Thu thuế nội địa</option>          <option>Thu thuế XNK</option>          <option>Thu phí, lệ phí</option>          <option>Thu tiền sử dụng đất</option>          <option>...</option>        </select>   </div>'.format(khoanmuccon);
+    insertstring += '<div id="lsltc_div">        Loại số liệu tài chính:        <select id="lsltc_select">  <option>{0}</option>         <option>Số liệu ban đầu</option>          <option>Điều chỉnh tăng</option>          <option>Điều chỉnh giảm</option>        </select>      </div>'.format(loaisolieu);
+    insertstring += '<div class="kntclabel" id="ndkntc" >        Nội dung:        <textarea id="ndkntctext" name="textarea" >{0}</textarea>      </div>      <div class="kntcmoneylabel" id="ndkntcmoney" >        Số tiền:        <textarea id="ndkntcmoneytext" name="textarea" >{1}</textarea>      </div>'.format(noidung, sotien);
+
+    insertstring += '</div>';
+
+    insertstring += '<div class="ctthkntc">     <div class="ctthkntcgroup">Nhập mới thông tin chứng từ thực hiện kiến nghị tài chính</div>';
+    insertstring += '<div class="sochungtulabel">  Số chứng từ:   <textarea id="sochungtutext" name="textarea" >{0}</textarea>   </div>      <div class="ngaynoplabel" >Ngày nộp: <input type="text" id="kntc_ngaynop" value = "{1}" onclick="clickdatetimengaynop()"></div>'.format(sochungtu, ngaynop);
+    insertstring += '<div class="khobaclabel">     Tên kho bạc nộp:      <textarea id="khobactext" name="textarea" >{0}</textarea>      </div>      <div class="ctthmoneylabel" id="ndctthmoney" >        Số tiền:        <textarea id="ndctthmoneytext" name="textarea" >{1}</textarea>      </div>'.format(tenkhoabac, sotienkhobac);
+    insertstring += '</div>';
+
+
 
     $("#parentfield").append(insertstring);
 }
@@ -1258,137 +1046,14 @@ function checkkmdatefrom() {
 function checkkmdateto() {
     $('.checkkmdateto').datepicker();
 }
-function defaultkeywordtext() {
-    var dict = {};
 
-    normal = ['Giới thiệu','Ưu đãi','Giá cước','Thủ tục hòa mạng'];
-    dv = ['Giới thiệu','Đối tượng sử dụng','Đặc điểm','Giá cước','Cách đăng ký','Cách hủy'];
-    km = ['Thời gian áp dụng', 'Ưu đãi', 'Đối tượng', 'Cách đăng ký', 'Cách hủy'];
-    var x = document.getElementById("myselect").value;
-    var div =  document.getElementById( 'parentfield' );
-    var left = getElementsByClassName(div, 'fielddata_left' );
-    var right = getElementsByClassName(div, 'fielddata_right' );
-
-
-
-    if(x == "km"){
-        count = 0;
-        for (var i=0; i<left.length; i++) {
-
-            var fieldname = getElementsByClassName(left[i], 'txtSearch' );
-            if(count < km.length){
-                fieldname[0].value = km[count];
-                count += 1;
-            }else {
-                fieldname[0].value = '';
-            }
-
-            if(i < right.length){
-
-                var fieldname = getElementsByClassName(right[i], 'txtSearch' );
-                if(count < km.length)   {
-
-                    fieldname[0].value = km[count];
-                    count += 1;
-                }else {
-                    fieldname[0].value = '';
-                }
-
-            }
-        }
-    }else if(x == 'normal'){
-        count = 0;
-        for (var i=0; i<left.length; i++) {
-
-            var fieldname = getElementsByClassName(left[i], 'txtSearch' );
-            if(count < normal.length){
-                fieldname[0].value = normal[count];
-                count += 1;
-            }else {
-                fieldname[0].value = '';
-            }
-                
-            if(i < right.length){
-                
-                var fieldname = getElementsByClassName(right[i], 'txtSearch' );
-                if(count < normal.length)   {
-                    
-                    fieldname[0].value = normal[count];
-                    count += 1;
-                }else {
-                    fieldname[0].value = '';
-                }
-                    
-            }
-        }
-    }else if(x == 'dv'){
-        count = 0;
-        for (var i=0; i<left.length; i++) {
-
-            var fieldname = getElementsByClassName(left[i], 'txtSearch' );
-            if(count < dv.length){
-                fieldname[0].value = dv[count];
-                count += 1;
-            }
-                
-            if(i< right.length){
-                
-                var fieldname = getElementsByClassName(right[i], 'txtSearch' );
-                if(count < dv.length){
-                    fieldname[0].value = dv[count];
-                    count += 1;
-                }
-                    
-            }
-        }
-    }
-}
-function onSummaryOptionChange() {
-    var x = document.getElementById("myselect").value;
-    var modal= document.getElementById('kmedit');
-    var div =  document.getElementById( 'parentfield' );
-    var kmlabel = getElementsByClassName(div, "fieldlabelkm");
-    if(x == "km"){
-        modal.style.display =  'block';
-
-        for (var i=0; i<kmlabel.length; i++) {
-
-            var child = kmlabel[i];
-            child.style.display = 'none';
-        }
-        
-    }else{
-        modal.style.display =  'none';
-        for (var i=0; i<kmlabel.length; i++) {
-
-            var child = kmlabel[i];
-            child.style.display = 'block';
-        }
-    }
-    defaultkeywordtext();
-}
 function onSearchResultOptionChange() {
     var x = document.getElementById("searchresultresultoption").value;
     if(x.length > 0){
         searchdetail(x);
     }
 }
-function onPressKeyUp(){
-  startautosave();
-    autosave = true;
-}
-function onPressKeyDown(){
-stopautosave();
-    autosave = false;
-}
-function oncheckboxchange() {
-    alert(1);
-    var $this = $(this);
-    alert($this.className);
-    parentnodectrl = $this.parentNode.parentNode;
-    datefrom = getElementsByClassName(parentnodectrl, 'fieldkmlabelfrom');
-    datefrom.style.display = 'none';
-}
+
 function onchangedatetimedetail() {
 
     var div =  document.getElementById( 'parentfield' );
@@ -1438,121 +1103,4 @@ function onchangedatetimedetail() {
      
     }
 
-}
-function deletewarning() {
-    return;
-    $.ajax({
-        type: "post",
-        url: webservice + "warning", //this is my servlet
-        data: "type=del" + "&keyword="+oldkeyword,
-        success: function(msg){
-            changestatus = false;
-            getwarning();
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            return;
-        }
-    });
-}
-function postwarning() {
-    return;
-    if(oldkeyword.length == 0)
-        return;
-    $.ajax({
-        type: "post",
-        url: webservice + "warning", //this is my servlet
-        data: "type=insert" + "&keyword="+oldkeyword + "&account="+account,
-        success: function(msg){
-
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            return;
-        }
-    });
-}
-function getwarning() {
-    var modal= document.getElementById('editwarning');
-    modal.style.display = 'none';
-    return;
-    $.ajax({
-        type: "post",
-        url: webservice + "warning", //this is my servlet
-        data: "type=get",
-        success: function(msg){
-            msg = msg.trim();
-            var modal= document.getElementById('editwarning');
-            if(msg.length > 0){
-                listwarning = msg.split('@');
-                for (i = 0; i < listwarning.length; i++){
-                    var ul = document.getElementById("slide");
-                    var li = document.createElement("li");
-                    li.appendChild(document.createTextNode(listwarning[i]));
-                    ul.appendChild(li);
-        
-                }
-                modal.style.display = 'block';
-            }else{
-                modal.style.display = 'none';
-            }
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            return;
-        }
-    });
-}
-
-var fun = function autosave() {
-    if(autosave == false)
-        return;
-    if(changestatus ==false){
-        postwarning();
-        changestatus = true;
-    }
-    autosave = false;
-/*    var postjson = getpostjson();
-   if(oldkeyword.length == 0 && keyword.length > 0){
-       $.ajax({
-           type: "post",
-           url:webservice +  "insert", //this is my servlet
-           data: "summary=" +postjson+"&keyword="+keyword+"&description="+description+"&summarytype="+summarytype,
-           success: function(msg){
-               deletewarning();
-           },
-           error: function(XMLHttpRequest, textStatus, errorThrown) {
-               return;
-           }
-       });
-   }else if(oldkeyword.length > 0 && keyword.length > 0){
-
-       var currentdate = new Date();
-       var datetime = currentdate.getDate() + "/"
-           + (currentdate.getMonth()+1)  + "/"
-           + currentdate.getFullYear() + " "
-           + currentdate.getHours() + ":"
-           + currentdate.getMinutes() + ":"
-           + currentdate.getSeconds();
-       datetime += " do " + account;
-
-       $.ajax({
-           type: "post",
-           url: webservice + "update", //this is my servlet
-           data: "summary=" +postjson+"&keyword="+keyword+"&description="+description+"&summarytype="+summarytype+"&originkey="+oldkeyword+"&uptime="+datetime,
-           cache: false,
-           processData: false,
-           success: function(msg){
-                 deletewarning();
-           },
-           error: function(xhr, status, error) {
-               alert(err.Message);
-           }
-       });
-   }*/
-}
-
-function startautosave() {
-    myautosave = setTimeout(fun, 5000);
-}
-
-function stopautosave() {
-    clearTimeout(myautosave);
 }
