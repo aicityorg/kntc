@@ -41,7 +41,7 @@ public class SearchService {
                 String data = rs.getString("data");
                 Object obj = parser.parse(data);
                 JSONObject jsonObject =  (JSONObject) obj;
-                if(strYear.length() == 0 || strKeyword.length() == 0){
+                if(strYear.length() == 0 && strKeyword.length() == 0){
                     result += Integer.toString(rs.getInt("id")) + "#"+jsonObject.get("namtc");
                     result += "$";
                 }else if(strYear.length() > 0){

@@ -40,12 +40,25 @@ public class CNSPServlet extends HttpServlet {
         String mysqlurl= getServletContext().getInitParameter("mysqlhost");
         String mysqluser = getServletContext().getInitParameter("mysqluser");
         String mysqlpass = getServletContext().getInitParameter("mysqlpass");
+        String method = params.get("method");
+        if(method.compareTo("insert") == 0){
+            String data=params.get("data");
+            data = data.replaceAll("<br/>", "\r\n");
+            String updatedtime = params.get("uptime");
+            String type = params.get("type");
+            out.write(CNSPService.insert_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type));
+        }else if(method.compareTo("update") == 0){
+            String data=params.get("data");
+            data = data.replaceAll("<br/>", "\r\n");
+            String updatedtime = params.get("uptime");
+            String type = params.get("type");
+            String id = params.get("key");
+            out.write(CNSPService.update_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type, id));
+        }else if(method.compareTo("del") == 0){
+            String id = params.get("key");
+            out.write(CNSPService.delete_data(mysqlurl, mysqluser, mysqlpass, id));
+        }
 
-        String data=params.get("data");
-        data = data.replaceAll("<br/>", "\r\n");
-        String updatedtime = params.get("uptime");
-        String type = params.get("type");
-        out.write(CNSPService.insert_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type));
         out.close();
     }
 }

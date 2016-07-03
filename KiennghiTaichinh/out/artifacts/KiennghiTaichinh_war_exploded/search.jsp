@@ -38,6 +38,18 @@
             });*/
             defaultcontrolbeforeedit();
             displaysearchresultoption(false);
+            $("#searchvalue").keypress(function (event) {
+                if (event.which == 13) {
+                    event.preventDefault();
+                    search();
+                }
+            });
+            $("#namtcvalue").keypress(function (event) {
+                if (event.which == 13) {
+                    event.preventDefault();
+                    search();
+                }
+            });
 
 /*
             $("#searchvalue").keypress(function (event) {

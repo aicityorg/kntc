@@ -41,11 +41,25 @@ public class KNVBServlet extends HttpServlet {
         String mysqluser = getServletContext().getInitParameter("mysqluser");
         String mysqlpass = getServletContext().getInitParameter("mysqlpass");
 
-        String data=params.get("data");
-        data = data.replaceAll("<br/>", "\r\n");
-        String updatedtime = params.get("uptime");
-        String type = params.get("type");
-        out.write(KNVBService.insert_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type));
+        String method = params.get("method");
+        if(method.compareTo("insert") == 0){
+            String data=params.get("data");
+            data = data.replaceAll("<br/>", "\r\n");
+            String updatedtime = params.get("uptime");
+            String type = params.get("type");
+            out.write(KNVBService.insert_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type));
+        }else if(method.compareTo("update") == 0){
+            String data=params.get("data");
+            data = data.replaceAll("<br/>", "\r\n");
+            String updatedtime = params.get("uptime");
+            String type = params.get("type");
+            String id = params.get("key");
+
+            out.write(KNVBService.update_data(mysqlurl, mysqluser, mysqlpass, data, updatedtime, type, id));
+        }else if(method.compareTo("del") == 0){
+            String id = params.get("key");
+            out.write(KNVBService.delete_data(mysqlurl, mysqluser, mysqlpass, id));
+        }
         out.close();
     }
 }

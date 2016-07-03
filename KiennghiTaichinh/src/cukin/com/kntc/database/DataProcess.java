@@ -43,7 +43,7 @@ public class DataProcess {
             pst.setString(1, encoded);
             pst.setString(2, type);
             pst.setString(3, updatedtime);
-            pst.setString(3, id);
+            pst.setString(4, id);
 
             pst.executeUpdate();
             conn.close();
