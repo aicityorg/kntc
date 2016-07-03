@@ -220,36 +220,32 @@ function search() {
     var yearsearch = $("#namtcvalue").text();
     var detailsearch = "false";
 
-    if(textsearch.length > 0 || yearsearch.length > 0){
-        
-        removeOptions(document.getElementById('searchresultresultoption'));
+    removeOptions(document.getElementById('searchresultresultoption'));
 
-        $.ajax({
-            type: "post",
-            url: webservice + "search", //this is my servlet
-            data: "keyword="+textsearch+"&type="+typesearch + "&year="+yearsearch + "&detail="+detailsearch,
-            success: function(msg){
-                msg = msg.trim();
-                keywordlist = msg.split('$');
-                if(keywordlist.length > 0)
-                    displaysearchresultoption(true);
-                for (i = 0; i < keywordlist.length; i++){
-                    temp = keywordlist[i].trim();
-                    templist = temp.split('#');
-                    if(templist.length == 2)
-                        insertOptions(templist[1], document.getElementById('searchresultresultoption'), templist[0]);
-                }
-
-
-                onSearchResultOptionChange();
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert(errorThrown);
-                return;
+    $.ajax({
+        type: "post",
+        url: webservice + "search", //this is my servlet
+        data: "keyword="+textsearch+"&type="+typesearch + "&year="+yearsearch + "&detail="+detailsearch,
+        success: function(msg){
+            msg = msg.trim();
+            keywordlist = msg.split('$');
+            if(keywordlist.length > 0)
+                displaysearchresultoption(true);
+            for (i = 0; i < keywordlist.length; i++){
+                temp = keywordlist[i].trim();
+                templist = temp.split('#');
+                if(templist.length == 2)
+                    insertOptions(templist[1], document.getElementById('searchresultresultoption'), templist[0]);
             }
-        });
 
-    }
+
+            onSearchResultOptionChange();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(errorThrown);
+            return;
+        }
+    });
   
 }
 function insertcnsp(namtc, cuockt, diadiemkt, loaihinhkn, noidung) {
